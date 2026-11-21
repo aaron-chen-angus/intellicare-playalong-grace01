@@ -42,3 +42,13 @@ Running `setup()` in `tools/apps_script.gs` creates every tab below (existing ta
 - **New season:** change `Config → currentSeason` (e.g. `S2`). The "Season" filter then shows only new rows.
 - **Score ceiling:** after finishing the chart, set `Charts.maxScore` for each difficulty. The Results screen of the Editor shows the value as "max score (no Heartbeat)". The server allows up to 2× that, since Heartbeat Mode doubles points. Until it is set, the server uses 5,000,000.
 - **Profanity list:** comma-separated, in `Config → profanityList`.
+
+## Dashboards (v1.1)
+
+| Tab / URL | What it shows |
+|---|---|
+| **Dashboard** (first tab) | 8 KPI tiles; charts for runs per day, difficulty mix, accuracy by age band × gender, reaction time by age band, Rhythm and Coordination Index, accuracy distribution, hit rate per pad, timing by age band; a top-10 table; a weekday × 3-hour activity heat-map; the expected-pad → hit-pad confusion matrix. Refreshed every 10 minutes, or via the menu **🎵 intelliCARE → Refresh dashboard now** |
+| **DashData** | Chart source tables, written by `refreshDashboard()`. Do not edit by hand |
+| `<web app URL>?action=dashboard` | Live, filterable web dashboard (period, difficulty, age band, gender). Auto-refreshes every 60 s |
+
+The dashboards show aggregates only. Hidden leaderboard rows are excluded. Pad accuracy, confusion and timing come from consented Sessions records only.

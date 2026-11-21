@@ -31,6 +31,11 @@ try {
   # 1 menu phone; 2 menu desktop; 3 gameplay phone (demo mode, video may not load headless -> simulate)
   Shot "menu_phone" 390 844 $true $null
   Shot "menu_desktop" 1440 900 $false $null
+  $burst = "(async()=>{const h=document.getElementById('hero'),r=h.getBoundingClientRect();const ev=(t,x,y)=>h.dispatchEvent(new PointerEvent(t,{clientX:x,clientY:y,bubbles:true}));document.getElementById('menu').dispatchEvent(new PointerEvent('pointermove',{clientX:r.left+r.width*.8,clientY:r.top+r.height*.3,bubbles:true}));ev('pointerdown',r.left+r.width*.5,r.top+r.height*.45);await new Promise(r=>setTimeout(r,250));return 'ok'})()"
+  Cdp "Emulation.setDeviceMetricsOverride" @{ width = 390; height = 844; deviceScaleFactor = 2; mobile = $true } | Out-Null
+  Cdp "Page.navigate" @{ url = $url } | Out-Null; Start-Sleep -Seconds 4; Eval $burst | Out-Null
+  [IO.File]::WriteAllBytes((Join-Path $out "shot_menu_burst.png"), [Convert]::FromBase64String((Cdp "Page.captureScreenshot" @{ format = "png" }).result.data))
+  $script:log += "burst errors: " + (Eval "JSON.stringify(window.__errs)") + " pose idx " + (Eval "String(MenuFX.idx)")
   $play = "(async()=>{try{localStorage.setItem('icmpal.v1.activeProfile',JSON.stringify('guest'));}catch(e){} Game.start('demo','fire'); await new Promise(r=>setTimeout(r,2500)); const v=document.getElementById('vid'); try{ if(v.paused){ SongClock.playing=true; SongClock.anchorMedia=30; SongClock.anchorPerf=performance.now(); Game.state='PLAYING'; } }catch(e){} return 'ok'})()"
   Shot "play_phone" 390 844 $true $play
   $script:log += "notes: " + (Eval "JSON.stringify({full:Beatmap.charts.full.length,fire:Beatmap.charts.fire.length,groove:Beatmap.charts.groove.length,gentle:Beatmap.charts.gentle.length,placeholder:Beatmap.placeholder,samples:Object.keys(DrumSynth.buf)})")

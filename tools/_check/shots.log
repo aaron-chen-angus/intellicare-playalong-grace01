@@ -1,5 +1,6 @@
 ﻿menu_phone errors: []
 menu_desktop errors: []
+burst errors: [] pose idx 1
 play_phone errors: []
 notes: {"full":1794,"fire":1793,"groove":1472,"gentle":331,"placeholder":false,"samples":["snare","tom","cymbal","kick","hihat"]}
 tests: PASS perfect +40ms

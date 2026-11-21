@@ -1,0 +1,5 @@
+﻿grace-guitar-01.png: 1024x1536 -> 640 x 960, 628 KB
+grace-guitar-02.png: 1024x1536 -> 640 x 960, 612 KB
+grace-guitar-03.png: 1024x1536 -> 640 x 960, 560 KB
+grace-hero.png: 1024x1536 -> 640 x 960, 625 KB
+grace-portrait.png: 1024x1536 -> 640 x 960, 519 KB

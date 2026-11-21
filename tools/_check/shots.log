@@ -1,0 +1,29 @@
+﻿menu_phone errors: []
+menu_desktop errors: []
+play_phone errors: []
+notes: {"full":1794,"fire":1793,"groove":1472,"gentle":331,"placeholder":false,"samples":["snare","tom","cymbal","kick","hihat"]}
+tests: PASS perfect +40ms
+PASS great +80ms
+PASS good +130ms
+PASS +150ms = MISS then STRAY
+PASS gentle good +190ms
+PASS gentle perfect +65ms
+PASS wrong pad
+PASS miss after window
+PASS multiplier
+PASS maxScore(31)=19200
+PASS grade
+PASS stars
+PASS circular R=1 for constant lag
+PASS circular R≈0 for uniform phase
+PASS rhythm index perfect=100
+PASS calibration median & outlier
+PASS median
+PASS gentle only kick/snare
+PASS gentle gap ≥ 300 ms
+PASS groove has no tom
+PASS beatmap validates
+PASS phi(0)=.5
+PASS zOf(97.5)≈1.96
+
+0 failed
